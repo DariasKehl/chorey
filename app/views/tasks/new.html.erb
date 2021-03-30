@@ -1,0 +1,10 @@
+<h3>New Task (form)</h3>
+
+<%=form_for @task do |t| %>
+    <%= t.label :name %>
+    <%= t.text_field :name %> <br />
+    <%= t.label :details %>
+    <%= t.text_area :details %> <br />
+    <br />
+    <%= t.submit %>
+<% end %>
