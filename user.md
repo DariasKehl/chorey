@@ -11,3 +11,4 @@ rails g controller Users username:string email:string --no-test-framework
 
 rails generate controller Sessions new --no-helper --no-assets --no-test-framework --skip-routes --skip
 
+rails g resource ChoreList name room --no-test-framework

@@ -1,0 +1,2 @@
+class ChoreListsController < ApplicationController
+end

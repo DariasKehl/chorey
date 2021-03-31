@@ -10,11 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210330200835) do
+ActiveRecord::Schema.define(version: 20210331215359) do
+
+  create_table "chore_list_tasks", force: :cascade do |t|
+    t.integer  "chore_list_id"
+    t.integer  "task_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "chore_lists", force: :cascade do |t|
+    t.string   "name"
+    t.string   "room"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
     t.text     "details"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

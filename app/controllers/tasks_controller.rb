@@ -10,9 +10,11 @@ class TasksController < ApplicationController
     end
 
     def create
-        task = Task.create(task_params)
+        user = User.first
+        task = user.tasks.build(task_params)
+
         #submit task
-        byebug
+        #byebug
         redirect_to controller: 'tasks', action: 'index'
     end
 

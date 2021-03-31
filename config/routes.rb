@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :chore_lists
   resources :tasks
   
   get '/signup' => 'users#new'
