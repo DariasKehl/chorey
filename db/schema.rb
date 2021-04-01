@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20210331215359) do
   create_table "chore_list_tasks", force: :cascade do |t|
     t.integer  "chore_list_id"
     t.integer  "task_id"
+    t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20210331215359) do
   create_table "tasks", force: :cascade do |t|
     t.string   "name"
     t.text     "details"
+    t.string   "task_for"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
