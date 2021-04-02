@@ -10,11 +10,9 @@ class TasksController < ApplicationController
     end
 
     def create
-        user = User.first
+        #Needs currentuser 
         task = user.tasks.build(task_params)
 
-        #submit task
-        #byebug
         redirect_to controller: 'tasks', action: 'index'
     end
 
@@ -22,6 +20,12 @@ class TasksController < ApplicationController
         @task = Task.find(task_params)
 
     end
+
+    def edit
+        #lol - you were expecting functionality? 
+        "Edit#TasksController called"
+    end
+
 
     private
 

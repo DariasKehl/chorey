@@ -23,6 +23,10 @@ class ChoreListsController < ApplicationController
         @chore_list = ChoreList.find_by_id(params[:id])
         "Error: show#chore_list_controller !chore_list"
         redirect_to '/' if !@chore_list
+        @user = User.find_by_id(@chore_list.user_id)
+        #This needs to be replaced by a delagate
+        #See: https://stackoverflow.com/questions/34491278/find-a-user-by-model-associations-rails
+        
     end
     
     def edit

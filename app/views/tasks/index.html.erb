@@ -1,5 +1,5 @@
 <h2>Tasks Index</h2>
 
 <% @tasks.each do |e| %>
-    <%= e.name %> <br />
+    <%= link_to task_path(e), e.name %> Assigned to: <%= link_to user_path(e), e.user.username %><br />
 <% end %>
