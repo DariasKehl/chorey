@@ -28,8 +28,8 @@ class TasksController < ApplicationController
     end
 
     def update
-        raise params.inspect
-        if @task.update(task_params)
+        #raise params.inspect
+        if @task.update(params.require(:task).permit(:name, :details))
             redirect_to @task
           else
             render 'edit'
