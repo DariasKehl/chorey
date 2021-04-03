@@ -1,5 +1,24 @@
 <H2>
-    <%=@user.username%>'s assignment: <%= @chorelist.name %>
+    <%=@user.username%>'s assignments
+    <!-- now show the tasks. -->
     
+    <% @user.chore_lists.each do |cl| %>
+        <h4><%= link_to cl.name, chore_list_path(cl) %></h4>
+        <ul>
+            <% cl.tasks.each do |t| %>
+                <li><%=t.name%><br /><br />
+                    <%= t.details%><br />
+            <% end %>
+        </ul>
 
+    <% end %>
+    
+    
+    <%# Loop through @user.chore_list.each do |cl| { 
+        During this loop iteration, display chore_list.tasks.each {
+            display task t.name, t.details
+            buttons.
+
+        }
+    } %>
 </H2>

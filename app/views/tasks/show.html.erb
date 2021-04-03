@@ -1,0 +1,16 @@
+<h3>Show Task Page</h3>
+
+<hr>
+<B>Task Name:</B> <%= @task.name %>
+<br><br>
+<B>Task Details: </B><%= @task.details%>
+<br />
+<hr>
+<h2>This task is on these chore_lists:</h2>
+    
+    <ul>
+        <% @task.chore_lists.each do |cl| %>
+            <li><%= link_to cl.name, chore_list_path(cl) %>
+            <!-- >Assigned to chorelsit owner. then an edit button. -->
+        <% end %>
+    </ul>

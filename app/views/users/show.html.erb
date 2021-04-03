@@ -3,3 +3,18 @@
 <%= link_to "Logout", logout_path, method: "delete" %>
 <hr>
 <h2>Current Chore Lists</h2>
+
+<%=@user.username%>'s assignments
+    <!-- now show the tasks. -->
+    
+    <% @user.chore_lists.each do |cl| %>
+        <h4><%= link_to cl.name, chore_list_path(cl) %></h4>
+        <ul>
+            <% cl.tasks.each do |t| %>
+                <li><%=t.name%><br /><br />
+                    <%= t.details%><br />
+            <% end %>
+        </ul>
+
+    <% end %>
+    

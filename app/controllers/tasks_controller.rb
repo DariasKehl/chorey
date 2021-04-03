@@ -11,20 +11,32 @@ class TasksController < ApplicationController
 
     def create
         #Needs currentuser 
-        task = user.tasks.build(task_params)
-
+        task = Task.create(name: params[:name], details: params[:details])
+        task.user_id = 1
+        task.save
         redirect_to controller: 'tasks', action: 'index'
     end
 
     def show
-        @task = Task.find(task_params)
-
+        @task = Task.find(params[:id])
+        @cls = @task.chore_lists
+        #This may be unnecessary? 
     end
 
     def edit
-        #lol - you were expecting functionality? 
-        "Edit#TasksController called"
+        @task = Task.find(params[:id])
     end
+
+    def update
+        raise params.inspect
+        if @task.update(task_params)
+            redirect_to @task
+          else
+            render 'edit'
+          end
+    
+    end
+
 
 
     private
