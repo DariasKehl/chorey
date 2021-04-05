@@ -1,5 +1,12 @@
 class SessionsController < ApplicationController
-   
+    def new
+    end
+
+    def create
+        session[:username] = params[:username]
+        redirect_to '/'
+    end
+
     def destroy
         session.clear
         redirect_to root_path
@@ -19,5 +26,5 @@ class SessionsController < ApplicationController
     def user_id=
         session[:user_id]
     end
-    
+
 end

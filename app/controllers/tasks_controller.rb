@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
 
     def index
+        #return head(:forbidfden) unless session.include? :user_id
         @tasks = Task.all
     end
 
@@ -19,6 +20,8 @@ class TasksController < ApplicationController
     end
 
     def show
+        #return head(:forbidfden) unless session.include? :user_id
+        
         @task = Task.find(params[:id])
         @cls = @task.chore_lists
         #This may be unnecessary? 
@@ -30,6 +33,7 @@ class TasksController < ApplicationController
 
     def update
         #raise params.inspect
+        return head(:forbidfden) unless session.include? :user_id
         @task = Task.find(params[:id])
         if @task.update(task_params)
             redirect_to @task

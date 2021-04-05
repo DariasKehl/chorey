@@ -5,7 +5,7 @@
     <% @user.chore_lists.each do |cl| %>
         <h4><%= cl.name %>
         - <%= link_to "Edit", edit_chore_list_path(cl) %></h4>
-        <ul>
+        <ul><!-- This is where I need to use a nested form -->
             <% cl.tasks.each do |t| %>
                 <li><%=t.name%><br /><br />
                     <%= t.details%><br />

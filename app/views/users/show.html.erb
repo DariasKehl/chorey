@@ -6,6 +6,7 @@
 
 <%=@user.username%>'s assignments
     <!-- now show the tasks. -->
+    <%= button_to "New Chore List", new_chore_list_path %>
     
     <% @user.chore_lists.each do |cl| %>
         <h4><%= link_to cl.name, chore_list_path(cl) %></h4>

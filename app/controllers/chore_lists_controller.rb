@@ -1,8 +1,12 @@
 class ChoreListsController < ApplicationController
+    before_action :require_login
+    skip_before_action :require_login, only: [:index]
+        
+    
     def index
         #ApplicationController.redirect_if_not_logged_in
         #Comment copied - this needs to be user controlled? 
-
+        
         @chore_lists = ChoreList.all
     end
   
@@ -12,6 +16,7 @@ class ChoreListsController < ApplicationController
   
     def create
         chore_list = ChoreList.new(chore_list_params)
+        chore_list.user_id = session[:user_id]
         if chore_list.save
             redirect_to chore_list
         else
@@ -40,7 +45,11 @@ class ChoreListsController < ApplicationController
     end
     
     private 
-  
+    
+    def require_login
+        return head(:forbidden) unless session.include? :user_id
+      end
+
     def chore_list_params
         params.require(:chore_list).permit(:name, :room, :user_id)
     end
