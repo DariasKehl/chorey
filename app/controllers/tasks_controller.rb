@@ -12,7 +12,8 @@ class TasksController < ApplicationController
     def create
         #Needs currentuser 
         task = Task.create(name: params[:name], details: params[:details])
-        task.user_id = 1
+        byebug
+        #task.user_id = 1
         task.save
         redirect_to controller: 'tasks', action: 'index'
     end
@@ -29,7 +30,8 @@ class TasksController < ApplicationController
 
     def update
         #raise params.inspect
-        if @task.update(params.require(:task).permit(:name, :details))
+        @task = Task.find(params[:id])
+        if @task.update(task_params)
             redirect_to @task
           else
             render 'edit'

@@ -15,4 +15,9 @@ class SessionsController < ApplicationController
             redirect_to "/login"
         end
     end
+
+    def user_id=
+        session[:user_id]
+    end
+    
 end

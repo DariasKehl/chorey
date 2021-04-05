@@ -3,11 +3,13 @@
     <!-- now show the tasks. -->
     
     <% @user.chore_lists.each do |cl| %>
-        <h4><%= link_to cl.name, chore_list_path(cl) %></h4>
+        <h4><%= cl.name %>
+        - <%= link_to "Edit", edit_chore_list_path(cl) %></h4>
         <ul>
             <% cl.tasks.each do |t| %>
                 <li><%=t.name%><br /><br />
                     <%= t.details%><br />
+                    ["Mark Task Complete Button"]
             <% end %>
         </ul>
 
