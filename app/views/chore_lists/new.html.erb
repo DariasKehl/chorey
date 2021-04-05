@@ -1,14 +1,5 @@
 <h3>New Chore List Form</h3>>
 
-<%=form_for @chore_list do |f| %>
-<%= f.label :name %>
-<%= t.text_field :name %> <br />
-<%= f.label :room %>
-<%= t.text_field :room %> <br />
-<%= f.submit %>
-
-
- 
-<% end %>
+<%= render partial: 'form', locals: {task: @chore_list} %>
 
 
