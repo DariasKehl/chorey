@@ -13,7 +13,7 @@ class ChoreListsController < ApplicationController
     def new
         @chore_list = ChoreList.new
         @chore_list.tasks.build(name: "task01_name")
-        @chore_list.tasks.build(name: "task02_name")
+       
     end
   
     def create
