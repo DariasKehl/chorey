@@ -1,7 +1,7 @@
 <h2>All Chore Lists (Index)</h2>
 
 <% @chore_lists.each do |cl| %>
-    <%= link_to User.find_by_id(cl.user_id).username, chore_list_path(cl) %> 
+    <%= link_to cl.name, chore_list_path(cl) %> 
     assigned to: 
-    <%= link_to "NameForLink", users_path(cl.user_id) %>  <br />
+    <%= link_to User.find_by_id(cl.user_id).username, users_path(cl.user_id) %>  <br />
 <% end %>
