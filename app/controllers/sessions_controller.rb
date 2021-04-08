@@ -6,6 +6,8 @@ class SessionsController < ApplicationController
         @user = User.find_by(username: params[:username])
         return head(:forbidden) unless @user.authenticate(params[:password])
         session[:user_id] = @user.id
+        byebug
+        redirect_to chore_lists_path(@user)
     end
 
     def destroy
@@ -17,7 +19,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:user][:username])
         if user && user.authenticate(params[:user][:password])
             session[:user_id] = user.id
-            redirect_to user_path(user)
+            redirect_to chore_lists_path(user)
         else
             flash[:message] = "Bad login - Retry."
             redirect_to "/login"

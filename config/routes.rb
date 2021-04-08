@@ -4,13 +4,15 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
 
   #login
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
 
+  get 'welcome', to: 'sessions#welcome'
+  
   #logout
   delete '/logout' => 'sessions#destroy'
   
-  resources :users
+  resources :users, only: [:new, :create]
   resources :chore_lists
   resources :tasks
 
