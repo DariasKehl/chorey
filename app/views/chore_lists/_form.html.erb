@@ -1,9 +1,10 @@
 <%=form_for @chore_list do |f| %>
     <%= f.label :name %>
-    <%= t.text_field :name %> <br />
+    <%= f.text_field :name %> <br />
     <%= f.label :room %>
-    <%= t.text_field :room %> <br />
-    <%= f.fields_for :task |tk| %>
+    <%= f.text_field :room %> <br /><br />>
+    
+    <%= f.fields_for :tasks do |tk| %>
         <%= tk.label :name %>
         <%= tk.text_field :name %>
         <%= tk.label :details %>
@@ -13,5 +14,5 @@
     <% end %>
     
     <%= f.submit %>
-    <%= hidden_field_tag :user_id, user_id= %>
+    
 <% end %>
