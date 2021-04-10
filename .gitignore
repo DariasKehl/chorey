@@ -19,3 +19,8 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+#ignore .env OAuth secrets
+.env
+/config/initializers/github.rb
+/config/initializers/omniauth.rb

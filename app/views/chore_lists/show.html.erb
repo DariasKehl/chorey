@@ -1,7 +1,9 @@
 <H2>
     ChoreList: <%= @chore_list.name %>   </h2>
     <% @chore_list.tasks.each do |t| %>
-        <h4><%= t.name %> </h4>
+        <h5><%= t.name + " - " + t.user_isCalled %></h5>
+        
+        <%= t.name %> </h5>
         <%= t.details %> <br />
           ["Complete Button"]
         <!-- - <%= link_to "Edit", edit_task_path(t) %> --> </h4>
