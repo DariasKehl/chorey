@@ -1,18 +1,15 @@
-<%=form_for @chore_list do |f| %>
+<%= form_for @chore_list do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %> <br />
     <%= f.label :room %>
-    <%= f.text_field :room %> <br /><br />>
-    
-    <%= f.fields_for :tasks do |tk| %>
+    <%= f.text_field :room %> <br />
+    <%= f.fields_for :tasks, chore_list.tasks.build do |tk| %>
         <%= tk.label :name %>
-        <%= tk.text_field :name %>
+        <%= tk.text_field :name %> <br />
         <%= tk.label :details %>
-        <%= tk.text_field :details %>
+        <%= tk.text_field :details %> <br />
         <%= tk.label :task_for %>
-        <%= tk.text_field :task_for %>
+        <%= tk.text_field :task_for %> <br />
     <% end %>
-    
     <%= f.submit %>
-    
 <% end %>

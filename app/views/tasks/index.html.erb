@@ -1,7 +1,7 @@
 <h2>Tasks Index</h2>
 
 <% @tasks.each do |e| %>
-    <%= link_to e.name, task_path(e) %> Assigned to: <%= link_to e.user_isCalled, user_path(e.user_id) %><br />
+    <%= link_to e.name, tasks_path(e) %> Assigned to: <%= link_to e.user_isCalled, users_path(e.user_id) %><br />
 <% end %>
 <hr>
 <%= link_to "Create Task:", new_task_path %> <!-- pass session ID/user? --> 

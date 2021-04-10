@@ -13,27 +13,26 @@ class TasksController < ApplicationController
     def create
         #Needs currentuser 
         task = Task.create(name: params[:name], details: params[:details])
-        byebug
         #task.user_id = 1
         task.save
         redirect_to controller: 'tasks', action: 'index'
     end
 
     def show
-        #return head(:forbidfden) unless session.include? :user_id
-        
+        return head(:forbidfden) unless session.include? :user_id
         @task = Task.find(params[:id])
         @cls = @task.chore_lists
         #This may be unnecessary? 
     end
 
     def edit
+        ##TODO: Do This
         @task = Task.find(params[:id])
     end
 
     def update
         #raise params.inspect
-        return head(:forbidfden) unless session.include? :user_id
+        return head(:forbidden) unless session.include? :user_id
         @task = Task.find(params[:id])
         if @task.update(task_params)
             redirect_to @task

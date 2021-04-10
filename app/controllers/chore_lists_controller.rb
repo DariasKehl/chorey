@@ -2,7 +2,6 @@ class ChoreListsController < ApplicationController
     before_action :require_login
     skip_before_action :require_login, only: [:index]
         
-    
     def index
         #ApplicationController.redirect_if_not_logged_in
         #Comment copied - this needs to be user controlled? 
@@ -30,8 +29,9 @@ class ChoreListsController < ApplicationController
         @chore_list = ChoreList.find_by_id(params[:id])
         "Error: show#chore_list_controller !chore_list"
         redirect_to '/' if !@chore_list
-        @user = User.find_by_id(@chore_list.user_id)
-        #This needs to be replaced by a delagate
+        #This is in session. @user = User.find_by_id(@chore_list.user_id)
+        #And this is already a created chorelist, with a user.  
+        #This needs to be replaced by a delegate
         #See: https://stackoverflow.com/questions/34491278/find-a-user-by-model-associations-rails
         
     end
@@ -53,6 +53,6 @@ class ChoreListsController < ApplicationController
       end
 
     def chore_list_params
-        params.require(:chore_list).permit(:name, :room, :user_id)
+        params.require(:chore_list).permit(:name, :room, :user_id, task_ids:[], tasks_attributes: [:name, :details, :task_for])
     end
 end
