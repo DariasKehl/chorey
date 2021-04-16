@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get '/auth/login', as: 'github_login'
-  get '/auth/:provider/callback' => 'sessions#authCreate' 
+  get '/auth/github/callback' => 'sessions#authCreate' 
 
   get 'welcome', to: 'sessions#welcome'
   
