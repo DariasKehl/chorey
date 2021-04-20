@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210331215359) do
+ActiveRecord::Schema.define(version: 20210420140849) do
 
   create_table "chore_list_tasks", force: :cascade do |t|
     t.integer  "chore_list_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20210331215359) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "uid"
   end
 
 end
