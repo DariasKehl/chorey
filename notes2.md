@@ -74,7 +74,3 @@ Confirm:
 - [] Limited logic in controllers
 - [] Views use helper methods if appropriate
 - [] Views use partials if appropriate
-
-I can’t follow past the question I asked you Apr 6 in the nested forms lessons or labs because I don’t understand what’s happening when the console just returns an *.  
-
-I can’t test around it with a browser because I still need help resolving the user authentication issues. 
