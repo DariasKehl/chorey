@@ -22,13 +22,15 @@ class SessionsController < ApplicationController
     
     def authCreate
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
-            ##TODO:: Add uid column to user table
+            ##TODO:: Add uid column to user table -- DONE
             #consider username conflict here? 
             u.username = auth['info']['name']
             u.email = auth['info']['email']
-            session[:user_id] = @user.id
-            redirect_to chore_lists_path(@user)
+            u.uid = auth['info']['uid']
+            session[:user_id] = u.id
+            
         end
+        redirect_to chore_lists_path(@user)
     end
 
 

@@ -50,8 +50,10 @@ group :development do
   gem 'annotate'
   gem 'bcrypt'
   gem 'dotenv-rails'
+  gem 'omniauth'
   gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
   gem 'thin'
+  gem "omniauth-rails_csrf_protection"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
