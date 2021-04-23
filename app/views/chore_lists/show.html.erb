@@ -1,11 +1,18 @@
 <H2>
     ChoreList: <%= @chore_list.name %>   </h2>
     <% @chore_list.tasks.each do |t| %>
-        <h5><%= t.name + " - " + t.user_isCalled %></h5>
-        
-        <%= t.name %> </h5>
-        <%= t.details %> <br />
-          ["Complete Button"]
+        <% if !(t.complete) %>
+          <h5><%= t.name + " - " + t.user_isCalled %></h5>
+          <%= t.name %> </h5>
+          <%= t.details %> <br />
+          <br />
+
+
+        <% end %>
+        <%= button_to "Mark as complete", { action: "complete", id: t.id } %>
         <!-- - <%= link_to "Edit", edit_task_path(t) %> --> </h4>
-        
+        <!-- Task complete 
+        *1. Add boolean to tasks. 
+        *2. Add complete method / check 
+        3. fix forms to display incomplete tasks -->
     <% end %>

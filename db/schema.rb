@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210420140849) do
+ActiveRecord::Schema.define(version: 20210423134336) do
 
   create_table "chore_list_tasks", force: :cascade do |t|
     t.integer  "chore_list_id"
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(version: 20210420140849) do
     t.text     "details"
     t.string   "task_for"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "complete",   default: false, null: false
   end
 
   create_table "users", force: :cascade do |t|

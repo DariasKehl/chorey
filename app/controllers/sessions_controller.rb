@@ -24,18 +24,18 @@ class SessionsController < ApplicationController
         @user = User.find_or_create_by(uid: auth['uid']) do |u|
             ##TODO:: Add uid column to user table -- DONE
             #consider username conflict here? 
-            //binding.pry
+            #binding.pry
             u.username = auth['info']['nickname']
             u.email = auth['info']['email']
             u.password = SecureRandom.hex(16)
             u.uid = auth['info']['uid']
             
         end
-        if user.valid?
-                session[:user_id] = u.id
+        if @user.valid?
+                session[:user_id] = @user.id
                 redirect_to chore_lists_path(@user)
         else
-            flash[:message] = user.errors.full_messages.join(", ")
+            flash[:message] = @user.errors.full_messages.join(", ")
             redirect_to login_path
         end
     end

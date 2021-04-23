@@ -12,13 +12,12 @@ class ChoreListsController < ApplicationController
     def new
         @chore_list = ChoreList.new
         @chore_list.tasks.build(name: "task01_name")
-       
     end
   
     def create
-        chore_list = ChoreList.new(chore_list_params)
-        chore_list.user_id = session[:user_id]
-        if chore_list.save
+        @chore_list = ChoreList.new(chore_list_params)
+        @chore_list.user_id = session[:user_id]
+        if @chore_list.save
             redirect_to chore_list
         else
             render :new
@@ -45,6 +44,14 @@ class ChoreListsController < ApplicationController
         @chore_list.update(chore_list_params)
         redirect_to chore_list_path(@chore_list)
     end
+
+    def complete
+        task = Task.find(params[:id])
+        task.complete!
+        redirect_to chore_list_path(task.user_isCalled)
+        #ifn resp.
+    end
+
     
     private 
     

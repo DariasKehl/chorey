@@ -42,10 +42,24 @@ class TasksController < ApplicationController
     
     end
 
-
+    def complete
+        task = task.find(params[:task_id])
+        task.complete!
+        #ifn resp.
+    end
 
     private
 
+
+    def setComplete
+        self.complete = true
+    end
+
+    def isComplete
+        self.complete
+    end
+
+    
     def task_params
         params.require(:task).permit(:name, :details, :task_for)
     end

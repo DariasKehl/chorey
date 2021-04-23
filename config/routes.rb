@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :chore_lists
   resources :tasks
-
+  post "complete", to: "chore_lists#complete"
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

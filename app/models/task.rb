@@ -14,4 +14,8 @@ class Task < ApplicationRecord
     def user_isCalled
       User.find_by_id(self.user_id).username
     end
+
+    def complete!
+      update(complete: true)
+    end
   end
